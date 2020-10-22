@@ -1,0 +1,27 @@
+FB link: https://m.facebook.com/story.php?story_fbid=2732190470353811&id=100006886549104
+Subscribed as: Bhaswar Chakraborty
+
+def add(base, n1, n2, carry = 0):  # Returns str or None
+
+    if (n1 > 0 and n2 > 0) or carry > 0:
+
+        dig1, dig2 = n1 % 10, n2 % 10
+        added = dig1 + dig2 + carry
+        if added >= base:
+            out = added % base
+            carry_ = added // base
+        else:
+            out = added
+            carry_ = 0
+        next_dig = add(base, n1 // 10, n2 // 10, carry_)
+        if next_dig:
+            return next_dig + str(out)
+        else:
+            return str(out)
+
+
+base = int(input('Base number: '))
+n1 = int(input('First number: '))
+n2 = int(input('Second number: '))
+print('_________________')
+print('Results: ' + add(base, n1, n2))
